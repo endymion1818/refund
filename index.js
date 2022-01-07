@@ -32,7 +32,7 @@ const mockOrder = {
             }
     ],
     hasNonRefundableProducts: true,
-    serviceAgreementVersion: 1
+    serviceAgreementVersion: '88c9653b-1a42-406c-873a-01e016a329fb'
 }
 
 app.get('/', (req, res) => {
