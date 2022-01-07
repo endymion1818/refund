@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 
 const app = express();
@@ -42,6 +43,6 @@ app.get('/:orderid', (req, res) => {
     return res.send(JSON.stringify(mockOrder))
 });
 
-app.listen(80, () => {
-    console.log('app listening on 80');
+app.listen(process.env.PORT, () => {
+    console.log(`app listening on ${process.env.PORT}`);
 })
