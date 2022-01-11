@@ -35,17 +35,20 @@ const mockOrder = {
     serviceAgreementVersion: '88c9653b-1a42-406c-873a-01e016a329fb'
 }
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.get('/', (req, res) => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
     return res.send('ok')
 });
 
 app.get('/:orderid', (req, res) => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
     return res.send(JSON.stringify(mockOrder))
 });
 
 app.listen(process.env.PORT, () => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
     console.log(`app listening on ${process.env.PORT}`);
 })
