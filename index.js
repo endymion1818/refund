@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require("cors")
 
-const app = express();
 
 const mockOrder = {
     isSuccess: true,
@@ -27,19 +27,23 @@ const mockOrder = {
             meta: {
                 startDate: '129302',
                 endDate: '129302'
-                },
-                price: 342423
-            }
+            },
+            price: 342423
+        }
     ],
     hasNonRefundableProducts: true,
     serviceAgreementVersion: '88c9653b-1a42-406c-873a-01e016a329fb'
 }
 
+const app = express();
+
+app.use(cors)
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
 
 app.get('/', (req, res) => {
     return res.send('ok')
